@@ -1,0 +1,2 @@
+rootProject.name = 'javamodules'
+include('app', 'common', 'config')

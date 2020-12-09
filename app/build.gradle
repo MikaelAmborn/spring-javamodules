@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+    id("de.jjohannes.extra-java-module-info") version "0.3"
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'org.springframework.boot' version '2.4.0'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+java.modularity.inferModulePath = true
+
+dependencies {
+    implementation project(':common')
+    implementation project(':config')
+    implementation 'org.springframework.boot:spring-boot-starter'
+}
+
+application {
+    mainClassName = 'com.hivestreaming.App'
+}
+
+extraJavaModuleInfo {
+    module('jul-to-slf4j-1.7.30.jar', 'org.slf4j.jul-to-slf4j', '1.7.30')
+    automaticModule('logback-classic-1.2.3.jar', 'logback.classic')
+    automaticModule('logback-core-1.2.3.jar', 'logback.core')
+}
+
